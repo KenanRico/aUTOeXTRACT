@@ -6,19 +6,17 @@ import shutil
 
 def main():
 	#parse params to get working director
-	if len(sys.argv)==2:
-		while 1:
-			run = raw_input("\nThis script may be dangerous. Please be 10000% sure the target directory is the correct one that contains the zip file. Continue? (y/n): ")
-			if run=='n':
-				exit()
-			elif run=='y':
-				break
-			else:
-				print("you got two options")
-	else:
-		print("please specify directory")
-		exit()
-	os.chdir(sys.argv[1])
+	home = "" 
+	while 1:
+		home = raw_input("\nEnter name of target directory (relative path)\n")
+		run = raw_input("This script may be dangerous. Please be 10000% sure the target directory is the correct one that contains the zip file. Continue? (y/n): ")
+		if run=='n':
+			exit()
+		elif run=='y':
+			break
+		else:
+			print("you got two options")
+	os.chdir(home)
 	#unzip and store original zip file
 	oz = os.listdir(".")[0]
 	#move all sub files to new dir, and set working directory there
@@ -27,7 +25,6 @@ def main():
 	os.chdir("./Extracted")
 	home = os.getcwd()
 	Unzip(oz, False)
-	print(os.listdir("."))
 	shutil.move(oz, "..")
 	#repeatedly call unzip command until no zip files exists
 	running = True

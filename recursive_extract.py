@@ -9,10 +9,11 @@ def main():
 	home = "" 
 	while 1:
 		home = raw_input("\nEnter name of target directory (relative path)\n")
-		run = raw_input("This script may be dangerous. Please be 10000% sure the target directory is the correct one that contains the zip file. Continue? (y/n): ")
+		run = raw_input("Please make sure the selected directory contains only one file - the zip file you intend to extract from (y/n) ")
 		if run=='n':
 			exit()
 		elif run=='y':
+			print("Contents will be placed in ./Extracted folder\n")
 			break
 		else:
 			print("you got two options")
@@ -31,17 +32,6 @@ def main():
 	while running:
 		for wd, _, files in os.walk('.'):
 			running = UnzipAll(wd, files, home)
-	#when done, ask user what to do with orig
-#	while 1:
-#		decision = raw_input("\nDelete original zip file? (y/n): ")
-#		if decision=='y':
-#			os.remove(oz)
-#			break
-#		elif decision=='n':
-#			break
-#		else:
-#			print("you got two options")
-
 
 def UnzipAll(wd, files, home):
 	found = False

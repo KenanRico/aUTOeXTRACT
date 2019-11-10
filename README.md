@@ -19,3 +19,9 @@ Currently support:
 1) `.zip` files
 2) `.tgz` files
 3) `.gz` files
+
+---
+
+## Demo
+
+![demo](./demo/guide.gif)
